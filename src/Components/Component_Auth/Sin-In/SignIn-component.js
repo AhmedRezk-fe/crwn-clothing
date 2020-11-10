@@ -3,6 +3,10 @@ import "./SignIn.style.scss";
 import FormInput from "../FormInput/FormInput.component";
 import CustomButton from "../CustomButton/CustomButton.component";
 
+// import auth google
+
+import {SignInWithGoogle} from "../../../Firebase/Firebase.Utils"
+
 class SignIn extends React.Component {
   state = {
     email: "",
@@ -54,7 +58,9 @@ class SignIn extends React.Component {
           />
 
           {/* input submit */}
-          <CustomButton type="submit">Submit Form</CustomButton>
+          <CustomButton type="submit">sign in</CustomButton>
+          <CustomButton onClick={SignInWithGoogle} >Sign in google </CustomButton>
+          
         </form>
       </div>
     );
