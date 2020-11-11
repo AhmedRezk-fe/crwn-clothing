@@ -1,3 +1,10 @@
 .sign-in{
     width: 30vw;
 }
+.option-btn{
+    display: flex;
+    justify-content: space-between;
+    .custom-button{
+        width: 48%;
+    }
+}

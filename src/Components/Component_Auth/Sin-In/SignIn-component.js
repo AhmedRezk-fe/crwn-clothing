@@ -5,7 +5,7 @@ import CustomButton from "../CustomButton/CustomButton.component";
 
 // import auth google
 
-import {SignInWithGoogle} from "../../../Firebase/Firebase.Utils"
+import { SignInWithGoogle } from "../../../Firebase/Firebase.Utils";
 
 class SignIn extends React.Component {
   state = {
@@ -19,7 +19,6 @@ class SignIn extends React.Component {
     this.setState({ email: "", password: "" });
   };
 
-
   // handelChange
   handelChange = (e) => {
     const { value, name } = e.target;
@@ -29,7 +28,6 @@ class SignIn extends React.Component {
     });
   };
 
-  
   render() {
     return (
       <div className="sign-in">
@@ -58,9 +56,15 @@ class SignIn extends React.Component {
           />
 
           {/* input submit */}
-          <CustomButton type="submit">sign in</CustomButton>
-          <CustomButton onClick={SignInWithGoogle} >Sign in google </CustomButton>
-          
+          <div className="option-btn">
+
+            <CustomButton type="submit">sign in</CustomButton>
+            
+            <CustomButton onClick={SignInWithGoogle} isGoogleSignIn>
+            {" "} Sign in google{" "}
+            </CustomButton>
+
+          </div>
         </form>
       </div>
     );

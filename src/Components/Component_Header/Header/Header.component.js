@@ -2,16 +2,21 @@ import "./Header.style.scss";
 import {Link} from "react-router-dom";
 import {ReactComponent as Logo} from "../../../assets/crown.svg.svg";
 
-const Header = (props) => (
+import {auth} from "../../../Firebase/Firebase.Utils"
+
+const Header = ({currentUser}) => (
     <div className="header">
         <Link className="logo-container" to="/">
             <Logo className="logo"></Logo>
         </Link>
         <div className="options">
             {
-                props.currentUser ? 
-                <Link className="option" to="/auth">SIGN OUT</Link> : 
-                <Link className="option" to="/auth">SININ</Link>
+                currentUser ? 
+                <div className="option" onClick={() => auth.signOut()}>
+                    SIGN OUT
+                </div>
+                 : 
+                <Link className="option" to="/auth">SIGN IN</Link>
             }
             
             <Link className="option" to="/shop">SHOP</Link>

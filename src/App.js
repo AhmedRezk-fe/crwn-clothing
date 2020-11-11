@@ -10,31 +10,32 @@ import Authentication from "./Pages/AuthenticationPage/Authentication.component"
 import Header from "./Components/Component_Header/Header/Header.component";
 
 // import auth
-import {auth} from "./Firebase/Firebase.Utils";
+import { auth } from "./Firebase/Firebase.Utils";
 
 // import css
 import "./App.css";
 
 class App extends React.Component {
   state = {
-    currentUser: null
+    currentUser: null,
   };
-  unSubscribeFromAuth=null
+
+  unSubscribeFromAuth = null;
+
   componentDidMount() {
     // console.log(auth)
-    this.unSubscribeFromAuth=auth.onAuthStateChanged((user) => {
+    this.unSubscribeFromAuth = auth.onAuthStateChanged((user) => {
       this.setState({
-        currentUser: user
+        currentUser: user,
       });
-      console.log(user)
+      console.log(user);
     });
-    // setTimeout(() => {
-    //   this.unSubscribeFromAuth()
-    // }, 3000);
   }
-  componentWillUnmount(){
-    this.unSubscribeFromAuth()
+
+  componentWillUnmount() {
+    this.unSubscribeFromAuth();
   }
+
   render() {
     return (
       <>
@@ -42,12 +43,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
-          {
-            this.state.currentUser ? 
-             <Route path="/auth" component={Authentication} /> : 
-             <Route exact path="/auth" component={HomePage} />
-          }
-          
+          <Route path="/auth" component={Authentication} />
         </Switch>
       </>
     );
