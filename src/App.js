@@ -10,7 +10,7 @@ import Authentication from "./Pages/AuthenticationPage/Authentication.component"
 import Header from "./Components/Component_Header/Header/Header.component";
 
 // import auth
-import { auth } from "./Firebase/Firebase.Utils";
+import { auth ,createUserProfileDocument} from "./Firebase/Firebase.Utils";
 
 // import css
 import "./App.css";
@@ -24,12 +24,10 @@ class App extends React.Component {
 
   componentDidMount() {
     // console.log(auth)
-    this.unSubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState({
-        currentUser: user,
-      });
-      console.log(user);
-    });
+
+    this.unSubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+      createUserProfileDocument(user)
+    }); 
   }
 
   componentWillUnmount() {
