@@ -51,7 +51,7 @@ class SignUP extends React.Component {
     this.setState({
         [name] : value
     })
-    console.log(name , value)
+    // console.log(name , value)
   }
 
   render() {
@@ -96,7 +96,6 @@ class SignUP extends React.Component {
             label="Confirm Password"
             required
           />
-
           <CustomButton type="submit" >SIGN UP</CustomButton>
         </form>
       </div>

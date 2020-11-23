@@ -5,7 +5,7 @@ import CustomButton from "../CustomButton/CustomButton.component";
 
 // import auth google
 
-import { SignInWithGoogle } from "../../../Firebase/Firebase.Utils";
+import { auth, SignInWithGoogle } from "../../../Firebase/Firebase.Utils";
 
 class SignIn extends React.Component {
   state = {
@@ -14,9 +14,16 @@ class SignIn extends React.Component {
   };
 
   // HandelSubmit
-  handelSubmit = (e) => {
+  handelSubmit = async (e) => {
     e.preventDefault();
-    this.setState({ email: "", password: "" });
+    const {email,password} = this.state;
+    try{
+      await auth.signInWithEmailAndPassword(email,password)
+      this.setState({ email: "", password: "" });
+
+    }catch(error){
+      console.log(error)
+    }
   };
 
   // handelChange
