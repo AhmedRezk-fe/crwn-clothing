@@ -3,12 +3,12 @@ import { withRouter } from "react-router-dom";
 import "./MenuItem.style.scss";
 
 const MenuItem = ({ match, ...otherdata }) => {
-  console.log("otherdata", otherdata);
   return (
     <div
       className={`menu-item ${otherdata.size || ""} `}
       onClick={() => {
         otherdata.history.push(`${otherdata.linkUrl}`);
+        console.log("otherdata.history",otherdata)
       }}
     >
       <div

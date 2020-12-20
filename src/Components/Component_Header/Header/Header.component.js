@@ -2,7 +2,7 @@ import "./Header.style.scss";
 import {Link} from "react-router-dom";
 import {ReactComponent as Logo} from "../../../assets/crown.svg.svg";
 
-import {auth} from "../../../Firebase/Firebase.Utils"
+import {auth} from "../../../Firebase/Firebase.Utils";
 
 const Header = ({currentUser}) => (
     <div className="header">
@@ -18,7 +18,6 @@ const Header = ({currentUser}) => (
                  : 
                 <Link className="option" to="/auth">SIGN IN</Link>
             }
-            
             <Link className="option" to="/shop">SHOP</Link>
             <Link className="option" to="/content">CONTACT</Link>
         </div>
