@@ -1,12 +1,14 @@
 import "./Header.style.scss";
 import {Link} from "react-router-dom";
 import {ReactComponent as Logo} from "../../../assets/crown.svg.svg";
+import CartIcon from "../../Componrnt_Cart/Cart.Icon/Cart.Icon"
+import CartDropDown from "../../Componrnt_Cart/Cart-dropdown/Cart-dropdown"
 
 import {auth} from "../../../Firebase/Firebase.Utils";
 import { connect } from "react-redux";
 
 
-const Header = ({currentUser}) => (
+const Header = ({user}) => (
     
     <div className="header">
         <Link className="logo-container" to="/">
@@ -14,8 +16,7 @@ const Header = ({currentUser}) => (
         </Link>
         <div className="options">
             {
-                
-                currentUser ? 
+                user ? 
                 <div className="option" onClick={() => auth.signOut()}>
                     SIGN OUT
                 </div>
@@ -24,14 +25,16 @@ const Header = ({currentUser}) => (
             }
             <Link className="option" to="/shop">SHOP</Link>
             <Link className="option" to="/content">CONTACT</Link>
+            <CartIcon />
         </div>
+            <CartDropDown />
     </div>
     
 )
 
 const mapStateToProps = state => (
     {
-        currentUser : state.user.currentUser
+        user : state.user.currentUser
     }
 )
 
