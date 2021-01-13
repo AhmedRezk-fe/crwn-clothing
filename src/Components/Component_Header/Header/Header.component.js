@@ -8,7 +8,7 @@ import {auth} from "../../../Firebase/Firebase.Utils";
 import { connect } from "react-redux";
 
 
-const Header = ({user}) => (
+const Header = ({currentUser , hidden}) => (
     
     <div className="header">
         <Link className="logo-container" to="/">
@@ -16,7 +16,7 @@ const Header = ({user}) => (
         </Link>
         <div className="options">
             {
-                user ? 
+                currentUser ? 
                 <div className="option" onClick={() => auth.signOut()}>
                     SIGN OUT
                 </div>
@@ -27,14 +27,18 @@ const Header = ({user}) => (
             <Link className="option" to="/content">CONTACT</Link>
             <CartIcon />
         </div>
-            <CartDropDown />
+        {
+            hidden ? null : <CartDropDown />
+        }
+            
     </div>
     
 )
 
-const mapStateToProps = state => (
+const mapStateToProps = ({user : {currentUser} , cart : { hidden}}) => (
     {
-        user : state.user.currentUser
+        currentUser,
+        hidden
     }
 )
 
