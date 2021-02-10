@@ -4,6 +4,7 @@ import { Switch, Route ,Redirect } from "react-router-dom";
 // import my page
 import HomePage from "./Pages/HomePage/homePage.Component";
 import ShopPage from "./Pages/Shop/Shop.component";
+import CheckOut from "./Pages/CheckOutPage/checkOut";
 import Authentication from "./Pages/AuthenticationPage/Authentication.component";
 
 // import header
@@ -11,6 +12,7 @@ import Header from "./Components/Component_Header/Header/Header.component";
 
 // import auth
 import { auth ,createUserProfileDocument} from "./Firebase/Firebase.Utils";
+import {selectCurrentUser} from "./Redux/User/user.selector"
 
 import {connect} from "react-redux";
 
@@ -62,14 +64,16 @@ class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
           <Route exact  path="/auth" render={()=> this.props.currentUser ? (<Redirect to="/" /> ) : (<Authentication />)} />
+          <Route exact path="/checkout" component={CheckOut} />
+
         </Switch>
       </>
     );
   }
 }
 
-const mapPropsToStat = ({user}) => ({
-  currentUser : user.currentUser
+const mapPropsToStat = (state) => ({
+  currentUser : selectCurrentUser(state)
 })
 
 const mapDispachToProps = dispach => ({
