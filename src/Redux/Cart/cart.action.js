@@ -15,7 +15,9 @@ export const clearItem = item => ({
     payload : item
 })
 
-export const ramoveItem = item => ({
+export const ramoveItem = item => (
+    console.log("ramoveItem" ,item),
+    {
     type : CreatActionType.Remove_ITEN_FROM_CART,
     payload : item
 })
