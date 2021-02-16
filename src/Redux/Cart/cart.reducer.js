@@ -1,5 +1,5 @@
 import CreatActionType from "./cart.type";
-import { addItemToCart , removeCartFromCheckOut } from "./utils";
+import { addItemToCart, removeCartFromCheckOut } from "./utils";
 
 const INITIAL_STATE = {
   hidden: true,
@@ -13,22 +13,23 @@ const CardReducer = (state = INITIAL_STATE, action) => {
         ...state,
         hidden: !state.hidden,
       };
-
     case CreatActionType.ADD_ITEM:
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload),
       };
     case CreatActionType.Remove_ITEN_FROM_CART:
-      return{
+      return {
         ...state,
-        cartItems : removeCartFromCheckOut(state.cartItems , action.payload)
-      }
+        cartItems: removeCartFromCheckOut(state.cartItems, action.payload),
+      };
     case CreatActionType.CLEAR_ITEN_FROM_CART:
-      return{
+      return {
         ...state,
-        cartItems: state.cartItems.filter(cartItem => cartItem.id != action.payload.id )
-      } 
+        cartItems: state.cartItems.filter(
+          (cartItem) => cartItem.id != action.payload.id
+        ),
+      };
     default:
       return state;
   }
