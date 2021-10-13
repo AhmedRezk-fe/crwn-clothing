@@ -51,11 +51,21 @@ class App extends React.Component {
   }
 
   render() {
+    const RouteData = [
+      {path : "/" ,component : HomePage ,exact : true},
+      {path : "/shop" ,component : ShopPage },
+      {path : "/auth" ,component : () => this.props.currentUser ? <Redirect to="/" /> : <Authentication />},
+      {path : "/checkout" ,component : CheckOut },
+    ]
     return (
       <>
         <Header />
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          {RouteData.map(({path , exact , component }) => {
+            return <Route exact={exact === true ? exact : ""} path={path} component={component} />
+          })}
+
+          {/* <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
           <Route
             exact
@@ -64,7 +74,7 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/" /> : <Authentication />
             }
           />
-          <Route exact path="/checkout" component={CheckOut} />
+          <Route exact path="/checkout" component={CheckOut} /> */}
         </Switch>
       </>
     );
