@@ -3,7 +3,7 @@ import "./style.scss";
 
 
 
-const CartItem = ({item : {imageUrl , name , price , quantity}}) => (
+const CartItem = ({item : {imageUrl, name, price, quantity}}) => (
     <div className="cart-item">
         <img src={imageUrl} alt="item"/>
         <div className="item-details">
