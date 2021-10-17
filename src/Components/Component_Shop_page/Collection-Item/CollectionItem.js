@@ -16,7 +16,7 @@ const CollectioItem = ({ item, addItem, cartItems }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
         {cartItems
-          .filter((item) => item.name == name)
+          .filter((item) => item.name === name)
           .map((item) => (item.quantity && item.quantity))}
       </div>
       <CustomButton inverted onClick={() => addItem(item)}>

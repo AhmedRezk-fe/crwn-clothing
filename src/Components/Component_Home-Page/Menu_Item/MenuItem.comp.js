@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import "./MenuItem.style.scss";
 
 const MenuItem = ({ match, ...otherdata }) => {
+  console.log("otherdataotherdata", otherdata)
   return (
     <div
       className={`menu-item ${otherdata.size || ""} `}
